@@ -78,7 +78,7 @@ app.post('/admin-login', async (req, res) => {
 
     // Hardcoded admin credentials (replace with secure storage in production)
     const ADMIN_USERNAME = 'admin';
-    const ADMIN_PASSWORD_HASH = '$2a$10$3zK8lQz4z6y8Xh7Qz8y6Xe9Qz8y6Xh7Qz8y6Xe9Qz8y6Xh7Qz8y6'; // Hash of 'supersecret'
+    const ADMIN_PASSWORD_HASH = '$2b$10$edoBRugJtgPccShh4VhhXug.OYX51KWnG6aezPv9aShXw/Xzlprt.'; // Hash of 'supersecret'
 
     try {
         if (username === ADMIN_USERNAME && await bcrypt.compare(password, ADMIN_PASSWORD_HASH)) {

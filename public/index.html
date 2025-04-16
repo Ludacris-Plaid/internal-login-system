@@ -16,5 +16,12 @@
         <button type="submit">Access System</button>
     </form>
     <a href="/admin-login" class="hidden-admin-button" title="Access restricted network">↯</a>
+    <script>
+        window.onload = () => {
+            const input = document.getElementById('username');
+            input.value = '';
+            input.focus();
+        };
+    </script>
 </body>
 </html>
