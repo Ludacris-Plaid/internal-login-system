@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darkweb Login</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1 data-text="Login">Login</h1>
+    <form action="/login" method="POST" autocomplete="off">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter username" required autofocus autocomplete="new-username">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required>
+        <button type="submit">Access System</button>
+    </form>
+    <a href="/admin-login" class="hidden-admin-button" title="Access restricted network">↯</a>
+</body>
+</html>

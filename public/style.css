@@ -1,0 +1,208 @@
+/* Cyberpunk Darkweb Theme */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0d0d0d;
+    color: #00ffcc;
+    font-family: 'Courier New', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image: linear-gradient(rgba(0, 255, 204, 0.1), rgba(255, 0, 204, 0.1));
+}
+
+/* Neon Glow Effect */
+h1, h2 {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: neon-glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon-glow {
+    from {
+        text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #ff00cc;
+    }
+    to {
+        text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #ff00cc;
+    }
+}
+
+/* Glitch Effect for Titles */
+h1::before, h1::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+h1::before {
+    color: #ff00cc;
+    animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+h1::after {
+    color: #00ccff;
+    animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse infinite;
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* Form Styling */
+form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #00ffcc;
+    border-radius: 5px;
+    box-shadow: 0 0 15px #00ffcc;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #ff00cc;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    background: #1a1a1a;
+    border: 1px solid #00ccff;
+    color: #00ffcc;
+    font-family: 'Courier New', monospace;
+    border-radius: 3px;
+    transition: all 0.3s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    outline: none;
+    box-shadow: 0 0 10px #00ccff;
+    border-color: #ff00cc;
+}
+
+/* Button Styling */
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background: #ff00cc;
+    border: none;
+    color: #0d0d0d;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: #00ffcc;
+    color: #0d0d0d;
+    box-shadow: 0 0 15px #00ffcc;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+/* Hidden Admin Button */
+.hidden-admin-button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    color: #00ffcc;
+    opacity: 0.2;
+    font-size: 24px;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.hidden-admin-button:hover {
+    opacity: 0.8;
+    text-shadow: 0 0 10px #00ffcc;
+}
+
+/* Admin Dashboard */
+#logins div {
+    background: rgba(0, 0, 0, 0.7);
+    margin: 10px auto;
+    padding: 15px;
+    max-width: 600px;
+    border: 1px solid #ff00cc;
+    border-radius: 5px;
+    color: #00ffcc;
+}
+
+#logins p {
+    margin-bottom: 10px;
+}
+
+#logins button {
+    width: auto;
+    padding: 5px 15px;
+    margin-right: 10px;
+}
+
+/* Success Page */
+.success-container {
+    text-align: center;
+    margin-top: 100px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    form, #logins div {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    h1, h2 {
+        font-size: 1.5em;
+    }
+
+    .hidden-admin-button {
+        font-size: 18px;
+    }
+}

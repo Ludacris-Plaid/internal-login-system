@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1 data-text="Admin Control">Admin Control</h1>
+    <h2>Pending Access Requests</h2>
+    <div id="logins"></div>
+    <script>
+        async function fetchLogins() {
+            try {
+                const response = await fetch('/admin-data');
+                if (!response.ok) {
+                    document.getElementById('logins').innerText = 'Access denied';
+                    return;
+                }
+                const logins = await response.json();
+                const loginsDiv = document.getElementById('logins');
+                loginsDiv.innerHTML = '';
+                logins.forEach(login => {
+                    const div = document.createElement('div');
+                    div.innerHTML = `
+                        <p>Username: ${login.username} | Time: ${new Date(login.timestamp).toLocaleString()} | Status: ${login.status}</p>
+                        <button onclick="approve('${login.id}')">Approve</button>
+                        <button onclick="deny('${login.id}')">Deny</button>
+                    `;
+                    loginsDiv.appendChild(div);
+                });
+            } catch (err) {
+                console.error('Fetch error:', err);
+                document.getElementById('logins').innerText = 'Error loading data';
+            }
+        }
+
+        async function approve(id) {
+            await fetch(`/approve/${id}`, { method: 'POST' });
+            location.reload();
+        }
+
+        async function deny(id) {
+            await fetch(`/deny/${id}`, { method: 'POST' });
+            location.reload();
+        }
+
+        fetchLogins();
+    </script>
+</body>
+</html>
